@@ -7,5 +7,5 @@ fi
 
 cd $PWD
 ghc $FILE
-./$FILE < input.txt
+time ./$FILE < input.txt
 rm $FILE.hi $FILE.o $FILE
