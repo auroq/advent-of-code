@@ -1,5 +1,11 @@
-#!/bin/sh
+#!/bin/bash
+FILE=$1
+
+if [[ "$FILE" == *.hs ]]; then
+    FILE=${FILE::-3}
+fi
+
 cd $PWD
-ghc $1
-./$1 < input.txt
-rm $1.hi $1.o $1
+ghc $FILE
+./$FILE < input.txt
+rm $FILE.hi $FILE.o $FILE
