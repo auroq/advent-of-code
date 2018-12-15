@@ -1,11 +1,16 @@
 #!/bin/bash
 FILE=$1
+INPUT=$2
 
-if [[ "$FILE" == *.hs ]]; then
-    FILE=${FILE::-3}
-fi
+[ -z "$FILE" ] && exit 1
+[ -z "$INPUT" ] && INPUT="input.txt"
+
+[[ "$FILE" == *.hs ]] && FILE=${FILE::-3}
 
 cd $PWD
+echo "Compiling $FILE"
 ghc $FILE
-time ./$FILE < input.txt
+
+echo "Running $FILE with input $INPUT"
+time ./$FILE < $INPUT
 rm $FILE.hi $FILE.o $FILE
